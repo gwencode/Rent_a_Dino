@@ -1,0 +1,34 @@
+.card-booked-dino {
+  height: 120px;
+  background-color: rgb(247,255,247);
+  border-radius: 8px;
+  margin: 12px auto;
+  padding: 8px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+.card-booked-dino .row {
+  align-items: center;
+}
+#dino-avatar {
+  border-radius: 50%;
+}
+.card-booked-dino h5 {
+
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border-radius: 25px;
+  padding: 8px 8px;
+  font-weight: bold;
+  color: white
+}
+.pending {
+  background: rgb(244,176,42);
+  color: rgb(50,50,50)
+}
+.accept {
+  background-color: rgb(6, 177, 75);
+  color: white
+}
+.deny {
+  background-color: #D93030;
+}
