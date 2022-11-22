@@ -3,12 +3,12 @@
 <% @bookings.each do |b| %>
 <div class="container card-booked-dino">
   <div class="row">
-    <div class="col">
+    <div class="col card-image">
       <%= cl_image_tag b.dinosaur.photos[0].key, height: 100, width: 100, crop: :fill, id: "dino-avatar" %>
     </div>
     <div class="col">
-      <p><%= b.dinosaur.name %></p>
-      <p><%= b.dinosaur.species %></p>
+      <p class="name"><%= b.dinosaur.name %></p>
+      <p class="species"><em><%= b.dinosaur.species %></em></p>
     </div>
     <div class="col">
       <p>From : <%= b.start_date.day %>/<%= b.start_date.month %>/<%= b.start_date.year %></p>

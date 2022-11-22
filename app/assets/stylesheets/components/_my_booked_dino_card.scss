@@ -6,6 +6,9 @@
   padding: 8px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
+.card-booked-dino .card-image {
+  text-align: center;
+}
 .card-booked-dino .row {
   align-items: center;
 }
@@ -20,6 +23,13 @@
   padding: 8px 8px;
   font-weight: bold;
   color: white
+}
+.card-booked-dino .name {
+  font-size: 24px;
+  font-weight: bold;
+}
+.card-booked-dino .species {
+  color: gray;
 }
 .pending {
   background: rgb(244,176,42);
