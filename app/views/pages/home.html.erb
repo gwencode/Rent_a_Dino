@@ -1,2 +1,28 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_url('homepage.jpeg') %>);">
+  <div class="up-page">
+    <div class="main-title">
+      <h1>Rent a Dino</h1>
+    </div>
+    <div class="btn-login">
+      <%= link_to "log in", new_user_session_path, class: "btn btn-ghost" %>
+    </div>
+  </div>
+  <div class="btn-get-started">
+    <%= link_to "Get started", dinosaurs_path, class: "btn btn-flat" %>
+  </div>
+  <div id="timeline-wrap">
+    <div id="timeline"></div>
+    <div class="marker mfirst timeline-icon one">
+        <i class="fa fa-person"></i>
+    </div>
+    <div class="marker m2 timeline-icon two">
+        <i class="fa fa-credit-card"></i>
+    </div>
+    <div class="marker m3 timeline-icon three">
+      <i class="fa fa-dragon"></i>
+    </div>
+    <div class="marker mlast timeline-icon four">
+      <i class="fa fa-heart"></i>
+    </div>
+  </div>
+</div>
