@@ -5,18 +5,20 @@
   <div class="row">
     <% @dinos.each do |dino| %>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3 d-flex justify-content-center">
-        <div class="card-dino mb-5 bg-black text-white opacity-85">
-          <%= cl_image_tag dino.photos[0].key %>
-          <div class="card-dino-infos">
-            <div>
-              <h2><%= dino.name %></h2>
-              <h3><%= dino.species %></h3>
-              <p><strong><%= dino.price_per_day %>€ </strong>per day</p>
-            </div>
+        <%= link_to dinosaur_path(dino), class: "text-decoration-none" do %>
+          <div class="card-dino mb-5 bg-black text-white opacity-85">
+            <%= cl_image_tag dino.photos[0].key %>
+            <div class="card-dino-infos">
+              <div>
+                <h2><%= dino.name %></h2>
+                <h3><%= dino.species %></h3>
+                <p><strong><%= dino.price_per_day %>€ </strong>per day</p>
+              </div>
 
-            <%= cl_image_tag dino.owner.avatar.key, class: "card-dino-user avatar-bordered" %>
+              <%= cl_image_tag dino.owner.avatar.key, class: "card-dino-user avatar-bordered" %>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     <% end %>
   </div>
