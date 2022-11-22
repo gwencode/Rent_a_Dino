@@ -5,4 +5,6 @@ class Dinosaur < ApplicationRecord
 
   validates :address, :name, :species, :price_per_day, presence: true
   validates :description, length: { minimum: 6 }
+
+  SPECIES = %i[Tyrannosaur Diplodocus Stegosaur Allosaur Velociraptor Galliminus Triceratops Archeopteryx Spinosaur Pterodactyl]
 end

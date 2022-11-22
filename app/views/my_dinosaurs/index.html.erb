@@ -1,0 +1,52 @@
+<div class="navbar fixed-top navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <h3>Rent a Dino</h3>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+          <li class="nav-item active">
+            <%= link_to "Home", dinosaurs_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item dropdown">
+            <%# <%= cl_image_tag current_user.avatar.key, class: "card-dino-user avatar-bordered" %>
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.avatar.key, crop: :thumb, width: 100 %>" />
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Add a dino", new_my_dinosaur_path, class: "dropdown-item" %>
+              <%= link_to "My rents", my_rents_path, class: "dropdown-item" %>
+              <%= link_to "My bookings", my_bookings_path, class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete},
+                  class: "dropdown-item" %>
+            </div>
+          </li>
+          <!--li class="nav-item"-->
+          <!--/li-->
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="container my-5">
+  <div class="row">
+    <% @owner_dinos.each do |dino| %>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3 d-flex justify-content-center">
+        <%= link_to dinosaur_path(dino), class: "text-decoration-none" do %>
+          <div class="card-dino mb-5 bg-black text-white opacity-85">
+            <%= cl_image_tag dino.photos[0].key, crop: :fill, width: 300 %>
+            <div class="card-dino-infos">
+              <div>
+                <h2><%= dino.name %></h2>
+                <h3><%= dino.species %></h3>
+                <p><strong><%= dino.price_per_day %>€ </strong>per day</p>
+              </div>
+
+              <%= cl_image_tag dino.owner.avatar.key, class: "card-dino-user avatar-bordered" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
