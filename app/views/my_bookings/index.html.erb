@@ -1,0 +1,25 @@
+<h2>My rented dinos</h2>
+
+<% @bookings.each do |b| %>
+<div class="container card-booked-dino">
+  <div class="row">
+    <div class="col card-image">
+      <%= cl_image_tag b.dinosaur.photos[0].key, height: 100, width: 100, crop: :fill, id: "dino-avatar" %>
+    </div>
+    <div class="col">
+      <p class="name"><%= b.dinosaur.name %></p>
+      <p class="species"><em><%= b.dinosaur.species %></em></p>
+    </div>
+    <div class="col">
+      <p>From : <%= b.start_date.day %>/<%= b.start_date.month %>/<%= b.start_date.year %></p>
+      <p>To : <%= b.end_date.day %>/<%= b.end_date.month %>/<%= b.end_date.year %></p>
+    </div>
+    <div class="col">
+      <p>Price : <%= b.booking_price %>€</p>
+    </div>
+    <div class="col">
+      <h5 class="<%= b.status %>"><%= b.status %></h5>
+    </div>
+  </div>
+</div>
+<% end %>
