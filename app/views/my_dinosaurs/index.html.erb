@@ -15,7 +15,7 @@
             <%# <%= cl_image_tag current_user.avatar.key, class: "card-dino-user avatar-bordered" %>
             <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.avatar.key, crop: :thumb, width: 100 %>" />
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "My dinos", my_dinosaurs_path, class: "dropdown-item" %>
+              <%= link_to "Add a dino", new_my_dinosaur_path, class: "dropdown-item" %>
               <%= link_to "My rents", my_rents_path, class: "dropdown-item" %>
               <%= link_to "My bookings", my_bookings_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete},
@@ -29,9 +29,8 @@
   </div>
 </div>
 <div class="container my-5">
-
   <div class="row">
-    <% @dinos.each do |dino| %>
+    <% @owner_dinos.each do |dino| %>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3 d-flex justify-content-center">
         <%= link_to dinosaur_path(dino), class: "text-decoration-none" do %>
           <div class="card-dino mb-5 bg-black text-white opacity-85">
@@ -43,7 +42,7 @@
                 <p><strong><%= dino.price_per_day %>€ </strong>per day</p>
               </div>
 
-              <%= cl_image_tag dino.owner.avatar.key, class: "card-dino-user avatar-bordered", crop: :thumb, width: 100 %>
+              <%= cl_image_tag dino.owner.avatar.key, class: "card-dino-user avatar-bordered" %>
             </div>
           </div>
         <% end %>

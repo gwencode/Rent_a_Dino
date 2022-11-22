@@ -6,5 +6,6 @@ class MyDinosaursController < ApplicationController
   end
 
   def index
+    @owner_dinos = current_user.dinosaurs
   end
 end
