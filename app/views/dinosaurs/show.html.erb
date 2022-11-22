@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-12 col-lg-8">
+      <% @dino.photos.each do |p| %>
+        <%= cl_image_tag p.key, height: 300, width: 700, crop: :fill  %>
+      <% end %>
+
+      <h2 class="mt-24"><%=@dino.name%></h2>
+      <hr />
+      <p class="mt-24"><%=@dino.description%></p>
+      <p>Price per day: <%=@dino.price_per_day%>€</p>
+    </div>
+
+    <div class="col-12 col-lg-4">
+      <div class="rounded border p-2 border-bottom">
+      <h2 class="text-center"><%="Book your Dino"%></h2>
+      <hr />
+        <%= simple_form_for([@dino, @booking]) do |f| %>
+          <%= f.input :start_date, as: :date, html5: true, label: "Start of booking"%>
+          <%= f.input :end_date, as: :date, html5: true, label: "End of booking"%>
+          <div class="d-flex justify-content-center">
+            <%= f.button :submit, "Book now", class: "btn btn-outline-secondary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>  
