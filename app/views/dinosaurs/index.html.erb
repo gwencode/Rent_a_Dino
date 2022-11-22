@@ -1,0 +1,22 @@
+<div class="container my-5">
+
+  <p>Future navbar</p>
+
+  <div class="d-flex flex-wrap justify-content-between">
+    <% @dinos.each do |dino| %>
+      <div class="card-dino mb-5">
+        <%= cl_image_tag dino.photos[0].key %>
+        <div class="card-dino-infos">
+          <div>
+            <h2><%= dino.name %></h2>
+            <h3><%= dino.species %></h3>
+            <p><strong><%= dino.price_per_day %>€ </strong>per day</p>
+          </div>
+
+          <%= cl_image_tag dino.owner.avatar.key, class: "card-dino-user avatar-bordered" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+

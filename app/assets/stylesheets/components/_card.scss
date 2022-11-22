@@ -1,0 +1,46 @@
+.card-dino {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  width: 15rem;
+}
+
+.card-dino > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-dino h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-dino h3 {
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-dino p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.card-dino .card-dino-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-dino-infos .card-dino-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
