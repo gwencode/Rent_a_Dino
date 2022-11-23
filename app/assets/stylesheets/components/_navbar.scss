@@ -1,6 +1,9 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: rgba(234, 226, 226, 0.2);
+  box-shadow: inset 0px 0px 8px 2px rgba(140, 139, 139, 0.79);
+  height: 67.6px;
+  grid-area: navbar;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +12,42 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.navbar-lewagon p {
+  color: white;
+}
+
+.page {
+  grid-area: main;
+}
+
+.navbar-lewagon h3 {
+  color: white;
+  text-shadow: 0 0 16px white;
+}
+.navbar-lewagon h3:hover {
+  opacity: 50%;
+}
+.navbar-lewagon .nav-link {
+  color: white;
+  text-shadow: 0 0 16px white;
+}
+.navbar-lewagon .nav-link:hover {
+  opacity: 50%;
+}
+
+.navbar-lewagon .dropdown-menu {
+  background: black;
+  color: white;
+  box-shadow: inset 0 0 8px 2px rgba(180,180,180,0.5);
+}
+.navbar-lewagon .dropdown-item {
+  color: white;
+  text-shadow: 0 0px 16px white;
+}
+.navbar-lewagon .dropdown-item:hover {
+  background: none;
+  border: 1px solid;
+  opacity: 50%;
 }
