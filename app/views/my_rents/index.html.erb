@@ -1,0 +1,52 @@
+<%# Pour chaque booking, on récupère le dinosaure %>
+<% @bookings.each do |booking| %>
+  <% booked_dino = booking.dinosaur %>
+  <%# On regarde si le dino est inclus dans les dinos du current_user  %>
+  <%# et si oui on ajoute le booking aux bookings du current_user %>
+  <% @user_bookings << booking if current_user.dinosaurs.include?(booked_dino) %>
+<% end  %>
+
+<%# Navbar %>
+
+<div class="navbar fixed-top navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <h3>Rent a Dino</h3>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+          <li class="nav-item active">
+            <%= link_to "Home", dinosaurs_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item dropdown">
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.avatar.key, crop: :thumb, width: 100 %>" />
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "My dinos", my_dinosaurs_path, class: "dropdown-item" %>
+              <%= link_to "My rents", my_rents_path, class: "dropdown-item" %>
+              <%= link_to "My bookings", my_bookings_path, class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete},
+                  class: "dropdown-item" %>
+            </div>
+          </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<%# On affiche les user_bookings %>
+
+<h2>My rents</h2>
+
+<%# A modifier avec les card de my bookings %>
+
+<% @user_bookings.each do |b| %>
+  <p>From: <%= b.start_date %></p>
+  <p>To: <%= b.end_date %></p>
+  <p>Total price: <%= b.booking_price %>€</p>
+  <p>Status: <%= b.status %></p>
+<% end %>
+
+
