@@ -117,7 +117,8 @@ Booking.create!(
   dinosaur_id: dinos[0].id,
   start_date: "2022-11-30T10:05:06+00:00",
   end_date: "2022-12-03T10:05:06+00:00",
-  booking_price: 2876
+  booking_price: 2876,
+  status: "accept"
 )
 Booking.create!(
   user_id: users[0].id,
@@ -138,6 +139,7 @@ Booking.create!(
   dinosaur_id: dinos[8].id,
   start_date: "2022-12-18T10:05:06+00:00",
   end_date: "2022-12-21T10:05:06+00:00",
-  booking_price: 87600
+  booking_price: 87600,
+  status: "deny"
 )
 puts "Done"

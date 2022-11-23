@@ -1,5 +1,33 @@
-<h2>My rented dinos</h2>
-
+<div class="navbar fixed-top navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <h3>Rent a Dino</h3>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+          <li class="nav-item active">
+            <%= link_to "Home", dinosaurs_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item dropdown">
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.avatar.key, crop: :thumb, width: 100 %>" />
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Add a dino", new_my_dinosaur_path, class: "dropdown-item" %>
+              <%= link_to "My Dinos", my_dinosaurs_path, class: "dropdown-item" %>
+              <%= link_to "My rents", my_rents_path, class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete},
+                  class: "dropdown-item" %>
+            </div>
+          </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="container text-center">
+  <h2 id='my-booking-title'>My booked dinos</h2>
+</div>
 <% @bookings.each do |b| %>
 <div class="container card-booked-dino">
   <div class="row">
@@ -7,7 +35,7 @@
       <%= cl_image_tag b.dinosaur.photos[0].key, height: 100, width: 100, crop: :fill, id: "dino-avatar" %>
     </div>
     <div class="col">
-      <p class="name"><%= b.dinosaur.name %></p>
+      <p><%= link_to b.dinosaur.name, dinosaur_path(b.dinosaur), class: "name" %></p>
       <p class="species"><em><%= b.dinosaur.species %></em></p>
     </div>
     <div class="col">
@@ -15,7 +43,7 @@
       <p>To : <%= b.end_date.day %>/<%= b.end_date.month %>/<%= b.end_date.year %></p>
     </div>
     <div class="col">
-      <p>Price : <%= b.booking_price %>€</p>
+      <p id="booking-price">Price : <%= b.booking_price.fdiv(100) %>€</p>
     </div>
     <div class="col">
       <h5 class="<%= b.status %>"><%= b.status %></h5>

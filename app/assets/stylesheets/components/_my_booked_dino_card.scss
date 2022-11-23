@@ -1,10 +1,13 @@
 .card-booked-dino {
   height: 120px;
-  background-color: rgb(247,255,247);
+  // background-color: rgb(247,255,247);
   border-radius: 8px;
   margin: 12px auto;
   padding: 8px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  box-shadow: inset 0px 0px 8px 2px rgba(255,255,255,0.3);
+}
+#my-booking-title {
+  text-shadow: 0 0 16px white;
 }
 .card-booked-dino .card-image {
   text-align: center;
@@ -16,7 +19,6 @@
   border-radius: 50%;
 }
 .card-booked-dino h5 {
-
   text-align: center;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border-radius: 25px;
@@ -24,12 +26,23 @@
   font-weight: bold;
   color: white
 }
+.card-booked-dino p {
+  margin: 12px 0;
+}
+.card-booked-dino #booking-price {
+  font-weight: bold;
+}
 .card-booked-dino .name {
   font-size: 24px;
   font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+.card-booked-dino .name:hover {
+  opacity: 50%;
 }
 .card-booked-dino .species {
-  color: gray;
+  color: rgb(150, 150, 150);
 }
 .pending {
   background: rgb(244,176,42);
