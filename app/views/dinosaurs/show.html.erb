@@ -9,20 +9,21 @@
       <h2 class="mt-24"><%=@dino.name%></h2>
       <hr />
       <p class="mt-24"><%=@dino.description%></p>
-      <p>Price per day: <%=@dino.price_per_day%>€</p>
+      <p>Price per day: <%=@dino.price_per_day.fdiv(100)%>€</p>
     </div>
 
     <div class="col-12 col-lg-4">
-      <div class="rounded border p-2 border-bottom">
-      <h2 class="text-center"><%="Book your Dino"%></h2>
-      <hr />
-        <%= simple_form_for([@dino, @booking]) do |f| %>
-          <%= f.input :start_date, as: :date, html5: true, label: "Start of booking"%>
-          <%= f.input :end_date, as: :date, html5: true, label: "End of booking"%>
-          <div class="d-flex justify-content-center">
-            <%= f.button :submit, "Book now", class: "btn btn-outline-secondary" %>
-          </div>
-        <% end %>
+      <div data-controller="display-price" data-display-price-dino-price-value="<%=@dino.price_per_day.fdiv(100)%>" class="rounded border p-2 border-bottom">
+        <h2 class="text-center"><%="Book your Dino"%></h2>
+        <hr />
+          <%= simple_form_for([@dino, @booking]) do |f| %>
+            <%= f.input :start_date, as: :date, html5: true, label: "Start of booking", input_html: {min: Date.today, data: {action: "change->display-price#compute", display_price_target: "startDate"}}%>
+            <%= f.input :end_date, as: :date, html5: true, label: "End of booking", input_html: {min: Date.today, data: {action: "change->display-price#compute", display_price_target: "endDate"}}%>
+            <p>TOTAL PRICE: <span data-display-price-target="totalPrice">0 €</span></p>
+            <div class="d-flex justify-content-center">
+              <%= f.button :submit, "Book now", disabled: true, class: "btn btn-outline-secondary", data: { display_price_target: "button" }%>
+            </div>
+          <% end %>
       </div>
     </div>
 
