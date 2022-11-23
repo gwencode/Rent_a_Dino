@@ -13,7 +13,7 @@ export default class extends Controller {
     const diff = endDate - startDate
     console.log(startDate)
     console.log(Date.now())
-    if (this.startDateTarget.value==="" || this.endDateTarget.value==="" || diff < 0 ) return this.#bookingError()
+    if (this.startDateTarget.value==="" || this.endDateTarget.value==="" || diff <= 0 ) return this.#bookingError()
 
     const diffDays = diff / 1000 / 60 / 60 / 24
     const totalPrice = this.dinoPriceValue * diffDays
