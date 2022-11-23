@@ -1,11 +1,3 @@
-<%# Pour chaque booking, on récupère le dinosaure %>
-<% @bookings.each do |booking| %>
-  <% booked_dino = booking.dinosaur %>
-  <%# On regarde si le dino est inclus dans les dinos du current_user  %>
-  <%# et si oui on ajoute le booking aux bookings du current_user %>
-  <% @user_bookings << booking if current_user.dinosaurs.include?(booked_dino) %>
-<% end  %>
-
 <%# Navbar %>
 
 <div class="navbar fixed-top navbar-expand-sm navbar-light navbar-lewagon">
@@ -38,15 +30,36 @@
 
 <%# On affiche les user_bookings %>
 
-<h2>My rents</h2>
-
-<%# A modifier avec les card de my bookings %>
-
-<% @user_bookings.each do |b| %>
-  <p>From: <%= b.start_date %></p>
-  <p>To: <%= b.end_date %></p>
-  <p>Total price: <%= b.booking_price %>€</p>
-  <p>Status: <%= b.status %></p>
+<div class="container text-center">
+  <h2 id='my-booking-title'>My rents</h2>
+</div>
+<% @bookings.each do |b| %>
+<div class="container card-booked-dino">
+  <div class="row">
+    <div class="col card-image">
+      <%= cl_image_tag b.dinosaur.photos[0].key, height: 100, width: 100, crop: :fill, id: "dino-avatar" %>
+    </div>
+    <div class="col">
+      <p><%= link_to b.dinosaur.name, dinosaur_path(b.dinosaur), class: "name" %></p>
+      <p class="species"><em><%= b.dinosaur.species %></em></p>
+    </div>
+    <div class="col">
+      <p>From : <%= b.start_date.day %>/<%= b.start_date.month %>/<%= b.start_date.year %></p>
+      <p>To : <%= b.end_date.day %>/<%= b.end_date.month %>/<%= b.end_date.year %></p>
+    </div>
+    <div class="col">
+      <p id="booking-price">Price : <%= b.booking_price.fdiv(100) %>€</p>
+      <p id="client">Booked by:<br><%= b.user.first_name%> <%= b.user.last_name%></p>
+    </div>
+    <div class="col">
+      <h5 class="<%= b.status %> m-0"><%= b.status %></h5>
+      <% if b.status == "pending" %>
+      <div class="d-flex justify-content-around mt-3">
+        <%= link_to "Accept", accept_my_rent_path(b), data: {turbo_method: :patch}, class: "link-success" %>
+        <%= link_to "Deny", deny_my_rent_path(b), data: {turbo_method: :patch}, class: "link-danger" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 <% end %>
-
-

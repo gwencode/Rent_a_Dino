@@ -10,6 +10,22 @@
   flex-grow: 0;
 }
 
+.navbar-lewagon .dropdown-menu {
+  background: none;
+  color: white;
+  box-shadow: inset 0 0 8px 2px rgba(180,180,180,0.5);
+}
+.navbar-lewagon .dropdown-item {
+  color: white;
+  text-shadow: 0 0px 16px white;
+}
+
+.navbar-lewagon .dropdown-item:hover {
+  background: none;
+  border: 1px solid;
+  opacity: 50%;
+}
+
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }

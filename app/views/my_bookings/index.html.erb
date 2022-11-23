@@ -28,7 +28,7 @@
 <div class="container text-center page">
   <h2 id='my-booking-title'>My booked dinos</h2>
 </div>
-<% @bookings.each do |b| %>
+<% @bookings.reverse.each do |b| %>
 <div class="container card-booked-dino">
   <div class="row">
     <div class="col card-image">
