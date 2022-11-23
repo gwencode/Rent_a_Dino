@@ -38,15 +38,29 @@
 
 <%# On affiche les user_bookings %>
 
-<h2>My rents</h2>
-
-<%# A modifier avec les card de my bookings %>
-
+<div class="container text-center">
+  <h2 id='my-booking-title'>My rents</h2>
+</div>
 <% @user_bookings.each do |b| %>
-  <p>From: <%= b.start_date %></p>
-  <p>To: <%= b.end_date %></p>
-  <p>Total price: <%= b.booking_price %>€</p>
-  <p>Status: <%= b.status %></p>
+<div class="container card-booked-dino">
+  <div class="row">
+    <div class="col card-image">
+      <%= cl_image_tag b.dinosaur.photos[0].key, height: 100, width: 100, crop: :fill, id: "dino-avatar" %>
+    </div>
+    <div class="col">
+      <p><%= link_to b.dinosaur.name, dinosaur_path(b.dinosaur), class: "name" %></p>
+      <p class="species"><em><%= b.dinosaur.species %></em></p>
+    </div>
+    <div class="col">
+      <p>From : <%= b.start_date.day %>/<%= b.start_date.month %>/<%= b.start_date.year %></p>
+      <p>To : <%= b.end_date.day %>/<%= b.end_date.month %>/<%= b.end_date.year %></p>
+    </div>
+    <div class="col">
+      <p id="booking-price">Price : <%= b.booking_price.fdiv(100) %>€</p>
+    </div>
+    <div class="col">
+      <h5 class="<%= b.status %>"><%= b.status %></h5>
+    </div>
+  </div>
+</div>
 <% end %>
-
-
