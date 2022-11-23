@@ -5,6 +5,7 @@ class MyDinosaursController < ApplicationController
 
   def create
     @dino = Dinosaur.new(dino_params)
+    @dino.price_per_day = @dino.price_per_day * 100
     @dino.owner = current_user
 
     if @dino.save
