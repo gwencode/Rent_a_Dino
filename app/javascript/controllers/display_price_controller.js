@@ -5,9 +5,6 @@ export default class extends Controller {
   static targets = ["totalPrice", "startDate", "endDate", "button"]
   static values = { dinoPrice: Number }
   connect() {
-    console.log(this.dinoPriceValue)
-    console.log(this.startDateTarget.value)
-
   }
 
   compute() {
