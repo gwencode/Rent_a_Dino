@@ -112,8 +112,34 @@ dino_data.each do |u|
   dinos << dino
 end
 puts "Creating Bookings...."
-Booking.create!(user_id: users[0].id, dinosaur_id: dinos[0].id, start_date: "2022-11-30T10:05:06+00:00", end_date: "2022-12-03T10:05:06+00:00")
-Booking.create!(user_id: users[0].id, dinosaur_id: dinos[2].id, start_date: "2022-12-05T10:05:06+00:00", end_date: "2022-12-07T10:05:06+00:00")
-Booking.create!(user_id: users[1].id, dinosaur_id: dinos[4].id, start_date: "2022-12-10T10:05:06+00:00", end_date: "2022-12-15T10:05:06+00:00")
-Booking.create!(user_id: users[2].id, dinosaur_id: dinos[8].id, start_date: "2022-12-18T10:05:06+00:00", end_date: "2022-12-21T10:05:06+00:00")
+Booking.create!(
+  user_id: users[0].id,
+  dinosaur_id: dinos[0].id,
+  start_date: "2022-11-30T10:05:06+00:00",
+  end_date: "2022-12-03T10:05:06+00:00",
+  booking_price: 2876,
+  status: "accept"
+)
+Booking.create!(
+  user_id: users[0].id,
+  dinosaur_id: dinos[2].id,
+  start_date: "2022-12-05T10:05:06+00:00",
+  end_date: "2022-12-07T10:05:06+00:00",
+  booking_price: 46789
+)
+Booking.create!(
+  user_id: users[1].id,
+  dinosaur_id: dinos[4].id,
+  start_date: "2022-12-10T10:05:06+00:00",
+  end_date: "2022-12-15T10:05:06+00:00",
+  booking_price: 34500
+)
+Booking.create!(
+  user_id: users[2].id,
+  dinosaur_id: dinos[8].id,
+  start_date: "2022-12-18T10:05:06+00:00",
+  end_date: "2022-12-21T10:05:06+00:00",
+  booking_price: 87600,
+  status: "deny"
+)
 puts "Done"
