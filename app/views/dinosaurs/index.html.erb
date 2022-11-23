@@ -8,11 +8,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-          <li class="nav-item active">
-            <%= link_to "Home", dinosaurs_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-            <%# <%= cl_image_tag current_user.avatar.key, class: "card-dino-user avatar-bordered" %>
+        <li class="nav-item active d-flex align-items-center m-3">
+          <%= link_to "Home", root_path, class: "nav-link" %>
+        </li>
+        <% if current_user %>
+          <li class="nav-item dropdown d-flex align-items-center">
             <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.avatar.key, crop: :thumb, width: 100 %>" />
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "My dinos", my_dinosaurs_path, class: "dropdown-item" %>
@@ -22,8 +22,11 @@
                   class: "dropdown-item" %>
             </div>
           </li>
-          <!--li class="nav-item"-->
-          <!--/li-->
+        <% else %>
+          <div class="d-flex align-items-center">
+            <%= link_to "log in", new_user_session_path, class: "btn btn-secondary" %>
+          </div>
+        <% end %>
       </ul>
     </div>
   </div>
@@ -40,7 +43,7 @@
               <div>
                 <h2><%= dino.name %></h2>
                 <h3><%= dino.species %></h3>
-                <p><strong><%= dino.price_per_day %>€ </strong>per day</p>
+                <p><strong><%= dino.price_per_day.fdiv(100) %>€ </strong>per day</p>
               </div>
 
               <%= cl_image_tag dino.owner.avatar.key, class: "card-dino-user avatar-bordered", crop: :thumb, width: 100 %>
