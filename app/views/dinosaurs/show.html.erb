@@ -11,16 +11,22 @@
           <li class="nav-item active">
             <p><%= link_to "Home", dinosaurs_path, class: "nav-link" %></p>
           </li>
-          <li class="nav-item dropdown">
-            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.avatar.key, crop: :thumb, width: 100 %>" />
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Add a dino", new_my_dinosaur_path, class: "dropdown-item" %>
-              <%= link_to "My Dinos", my_dinosaurs_path, class: "dropdown-item" %>
-              <%= link_to "My rents", my_rents_path, class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete},
-                  class: "dropdown-item" %>
+          <% if current_user %>
+            <li class="nav-item dropdown d-flex align-items-center">
+              <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.avatar.key, crop: :thumb, width: 100 %>" />
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "Add a dino", new_my_dinosaur_path, class: "dropdown-item" %>
+                <%= link_to "My Dinos", my_dinosaurs_path, class: "dropdown-item" %>
+                <%= link_to "My rents", my_rents_path, class: "dropdown-item" %>
+                <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete},
+                    class: "dropdown-item" %>
+              </div>
+            </li>
+          <% else %>
+            <div class="d-flex align-items-center">
+              <%= link_to "log in", new_user_session_path, class: "btn btn-secondary" %>
             </div>
-          </li>
+        <% end %>
       </ul>
     </div>
   </div>
@@ -55,4 +61,4 @@
     </div>
 
   </div>
-</div>  
+</div>

@@ -46,7 +46,15 @@
       <p id="booking-price">Price : <%= b.booking_price.fdiv(100) %>€</p>
     </div>
     <div class="col">
-      <h5 class="<%= b.status %>"><%= b.status %></h5>
+      <h5 class="<%= b.status %>">
+        <% if b.status == "accept" %>
+          <%= "Accepted" %>
+        <% elsif b.status == "deny" %>
+          <%= "Denied" %>
+        <% else %>
+          <%= "Pending..." %>
+        <% end %>
+      </h5>
     </div>
   </div>
 </div>
