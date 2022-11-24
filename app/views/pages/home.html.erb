@@ -1,7 +1,18 @@
 <div class="banner">
   <div class="container-fluid d-flex justify-content-between align-items-center">
     <div class="main-title">
-      <h1>Rent a Dino</h1>
+      <svg viewBox="0 0 600 300">
+        <!-- Symbol-->
+        <symbol id="s-text">
+          <text text-anchor="middle" x="50%" y="50%" dy=".35em">Rent a Dino</text>
+        </symbol>
+        <!-- Duplicate symbols-->
+        <use class="text" xlink:href="#s-text"></use>
+        <use class="text" xlink:href="#s-text"></use>
+        <use class="text" xlink:href="#s-text"></use>
+        <use class="text" xlink:href="#s-text"></use>
+        <use class="text" xlink:href="#s-text"></use>
+      </svg>
     </div>
     <% if current_user %>
       <ul style="list-style: none">
@@ -23,21 +34,33 @@
     <% end %>
   </div>
   <div class="btn-get-started">
-    <%= link_to "Get started", dinosaurs_path, class: "btn btn-flat" %>
+    <%= link_to "Find your dino", dinosaurs_path, class: "btn btn-flat" %>
   </div>
-</div>
   <div id="timeline-wrap">
     <div id="timeline"></div>
     <div class="marker mfirst timeline-icon one">
-        <i class="fa fa-person"></i>
+      <div class="marker-text">
+        <p>Find it</p>
+      </div>
+      <i class="fa fa-person"></i>
     </div>
     <div class="marker m2 timeline-icon two">
-        <i class="fa fa-credit-card"></i>
+    <div class="marker-text">
+        <p>Rent it</p>
+      </div>
+      <i class="fa fa-credit-card"></i>
     </div>
     <div class="marker m3 timeline-icon three">
+      <div class="marker-text">
+        <p>Meet it</p>
+      </div>
       <i class="fa fa-dragon"></i>
     </div>
     <div class="marker mlast timeline-icon four">
+      <div class="marker-text">
+        <p>Love it</p>
+      </div>
       <i class="fa fa-heart"></i>
     </div>
   </div>
+</div>
