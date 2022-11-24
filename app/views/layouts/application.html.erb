@@ -13,7 +13,7 @@
   <body class="background_img text_white">
     <%= render 'layouts/navbar' unless current_page?(root_path) %>
     <div class="main-container">
-      <p class="notice m-0 <%= notice ? "" : "d-none" %>"><%= notice %></p>
+      <p class="notice m-0"><%= notice %></p>
       <p class="alert m-0"><%= alert %></p>
       <%= yield %>
     </div>
