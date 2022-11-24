@@ -5,10 +5,12 @@
   border: 1px solid white;
   transition: background 0.3s ease;
   font-size: 20px;
+  box-shadow: 0 0 4px 0px #e9ecef;
 }
 
 .btn-flat:hover {
-  opacity: 0.5;
+  background-color: black;
+  cursor: pointer;
 }
 
 .btn-ghost {
@@ -19,16 +21,17 @@
   font-weight: lighter;
   transition: opacity 0.3s ease;
   font-size: 16px;
+  box-shadow: 0 0 4px 0px #e9ecef;
 }
 
 .btn-ghost:hover {
-  transition: opacity 0.3s ease;
+  background-color: black;
+  cursor: pointer;
 }
 
 .btn-get-started {
   display: flex;
     justify-content: space-around;
-    padding: 100px;
     padding-top: 320px;
     margin-bottom: -110px;
 }

@@ -1,11 +1,11 @@
-<div class="container my-3 bg-black text-white opacity-85 col-12 col-md-6 col-lg-4 p-3" >
-  <h3 class= "text-center">Rent a Dino</h3>
+<div class="container my-6 text-white opacity-85 col-12 col-md-6 col-lg-4 p-3 form-shadow" >
+  <h1 class= "text-center">Add a Dino</h1>
   <hr />
-  <p>Please enter the information about your dino</p>
+  <h4 class="fa-light fa-file-circle-info">Enter the Dino's info here :</h4>
   <%= simple_form_for(@dino, method: :post, url: my_dinosaurs_path) do |f| %>
-    <div class="form-inputs">
-      <div class="d-flex justifu-content-between">
-        <div class="me-2">
+    <div class="form-inputs mt-3 mb-3">
+      <div class="d-flex justify-content-between">
+        <div class="me-2 text-white">
           <%= f.input :name %>
         </div>
         <div class= "ms-2">
@@ -13,12 +13,13 @@
         </div>
       </div>
       <%= f.input :address %>
-      <%= f.input :description %>
-      <%= f.input :price_per_day, label: "Price per day (€)" %>
+      <%= f.input :description,  placeholder: "Mininum 6 characters"%>
+      <%= f.input :price_per_day, label: "Price €" %>
       <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Pictures" %>
     </div>
-    <div class="form-inputs">
-      <%= f.button :submit, "Rent my dino", class: "btn btn-primary", style: "width: 100%" %>
+    <div class="form-inputs text-center mt-4">
+      <%= f.button :submit, "Rent my dino", class: "form-button", style: "width: 50%" %>
     </div>
   <% end %>
 </div>
+

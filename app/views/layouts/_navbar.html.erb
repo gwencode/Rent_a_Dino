@@ -1,0 +1,46 @@
+<div class="navbar fixed-top navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid mx-3">
+    <%= link_to dinosaurs_path do %>
+      <div class="main-title">
+        <svg viewBox="0 0 600 300">
+          <!-- Symbol-->
+          <symbol id="s-text">
+            <text text-anchor="middle" x="50%" y="50%" dy=".35em">Rent a Dino</text>
+          </symbol>
+          <!-- Duplicate symbols-->
+          <use class="text" xlink:href="#s-text"></use>
+          <use class="text" xlink:href="#s-text"></use>
+          <use class="text" xlink:href="#s-text"></use>
+          <use class="text" xlink:href="#s-text"></use>
+          <use class="text" xlink:href="#s-text"></use>
+        </svg>
+      </div>
+    <% end %>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item active d-flex align-items-center m-3">
+          <%= link_to "Add a dino", new_my_dinosaur_path, class: "btn btn-outline-secondary nav-link" %>
+        </li>
+        <% if current_user %>
+          <li class="nav-item dropdown d-flex align-items-center">
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.avatar.key, crop: :thumb, width: 100 %>" />
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "My bookings", my_bookings_path, class: "dropdown-item" %>
+              <%= link_to "My dinos", my_dinosaurs_path, class: "dropdown-item" %>
+              <%= link_to "My rents", my_rents_path, class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete},
+                  class: "dropdown-item" %>
+            </div>
+          </li>
+        <% else %>
+          <div class="d-flex align-items-center">
+            <%= link_to "log in", new_user_session_path, class: "btn btn-secondary" %>
+          </div>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
