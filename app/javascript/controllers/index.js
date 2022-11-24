@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import DisplayPriceController from "./display_price_controller"
 application.register("display-price", DisplayPriceController)
+
+import MapController from "./map_controller"
+application.register("map", MapController)
