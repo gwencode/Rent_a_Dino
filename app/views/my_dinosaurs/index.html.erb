@@ -1,29 +1,38 @@
 <div class="container my-5">
   <div class="row">
     <% @owner_dinos.each do |dino| %>
-      <div class="col-12 col-sm-6 col-lg-4 col-xl-3 d-flex justify-content-center">
+      <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center p-0">
         <%= link_to dinosaur_path(dino), class: "text-decoration-none" do %>
-          <div class="card-dino mb-5 bg-black text-white opacity-85">
+          <div class="card-dino mb-5 text-white">
             <%= cl_image_tag dino.photos[0].key, crop: :fill, width: 300 %>
             <div class="card-dino-infos">
-              <div>
-                <h2><%= dino.name %></h2>
-                <h3><%= dino.species %></h3>
-                <p><strong><%= dino.price_per_day %>€ </strong>per day</p>
+              <div></div>
+              <%= cl_image_tag dino.owner.avatar.key, class: "card-dino-user avatar-bordered", crop: :thumb, width: 100 %>
+            </div>
+            <div>
+              <h5 class="text-center"><%= dino.name %></h5>
+              <div class="row align-items-center mx-1 mb-3">
+                <div class="col-7 ps-2 pe-0">
+                  <p><%= raw("<i class='fa-solid fa-paw'></i>")%> <%=dino.species %></p>
+                  <p><%= raw("<i class='fa-solid fa-location-crosshairs'></i>")%> <%=dino.address %></p>
+                </div>
+                <div class="col-5 ps-0 pe-2">
+                  <p><%= raw("<i class='fa-solid fa-euro-sign'></i>")%> <strong><%=dino.price_per_day %></strong> / day</p>
+                </div>
               </div>
-              <%= cl_image_tag dino.owner.avatar.key, class: "card-dino-user avatar-bordered" %>
             </div>
           </div>
         <% end %>
       </div>
     <% end %>
-
-    <%= link_to new_my_dinosaur_path, class: "text-decoration-none w-auto" do %>
-      <div class="card-dino mb-5 bg-black text-white opacity-85 border border-white">
-        <div class="add-dino d-flex justify-content-center align-items-center">
-          <div class="fa-solid fa-plus"></div>
+    <div class="div">
+      <%= link_to new_my_dinosaur_path, class: "text-decoration-none w-auto" do %>
+        <div class="card-dino mb-5 bg-black text-white opacity-85 border border-white">
+          <div class="add-dino d-flex justify-content-center align-items-center">
+            <div class="fa-solid fa-plus"></div>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

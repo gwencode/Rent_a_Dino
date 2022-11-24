@@ -3,7 +3,7 @@
     <% @dinos.each do |dino| %>
       <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center p-0">
         <%= link_to dinosaur_path(dino), class: "text-decoration-none" do %>
-          <div class="card-dino mb-5 bg-black text-white opacity-85">
+          <div class="card-dino mb-5 text-white">
             <%= cl_image_tag dino.photos[0].key, crop: :fill, width: 300 %>
             <div class="card-dino-infos">
               <div></div>
