@@ -1,0 +1,26 @@
+<div class="navbar fixed-top navbar-expand-sm navbar-light">
+  <div class="container-fluid mx-3">
+    <%= link_to dinosaurs_path do %>
+      <div class="main-title">
+        <svg viewBox="0 0 600 300">
+          <!-- Symbol-->
+          <symbol id="s-text">
+            <text text-anchor="middle" x="50%" y="50%" dy=".35em">Rent a Dino</text>
+          </symbol>
+          <!-- Duplicate symbols-->
+          <use class="text" xlink:href="#s-text"></use>
+          <use class="text" xlink:href="#s-text"></use>
+          <use class="text" xlink:href="#s-text"></use>
+          <use class="text" xlink:href="#s-text"></use>
+          <use class="text" xlink:href="#s-text"></use>
+        </svg>
+      </div>
+    <% end %>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="d-flex align-items-center">
+        <%= link_to "Home", root_path, class: "btn btn-ghost" %>
+      </div>
+  </div>
+</div>
