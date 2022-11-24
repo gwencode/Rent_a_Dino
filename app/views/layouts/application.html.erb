@@ -14,7 +14,7 @@
     <%= render 'layouts/navbar' unless current_page?(root_path) || current_page?(new_user_session_path) %>
     <%= render 'layouts/navbar_login' if current_page?(new_user_session_path) %>
     <div class="main-container">
-      <p class="notice m-0"><%= notice %></p>
+      <p class="notice m-0 <%= "d-none" if @hide_notice %>"><%= notice %></p>
       <p class="alert m-0"><%= alert %></p>
       <%= yield %>
     </div>
