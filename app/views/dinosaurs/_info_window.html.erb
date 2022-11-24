@@ -1,0 +1,13 @@
+<%= link_to dinosaur_path(dino), class: "text-decoration-none" do %>
+  <%= cl_image_tag dino.photos[0].key, crop: :fill %>
+  <h5 class="text-center mt-3"><%= dino.name %></h5>
+  <div class="row align-items-center mx-1 mb-0">
+    <div class="col-7 ps-2 pe-0">
+      <p><%= raw("<i class='fa-solid fa-paw'></i>")%> <%=dino.species %></p>
+      <p><%= raw("<i class='fa-solid fa-location-crosshairs'></i>")%> <%=dino.address %></p>
+    </div>
+    <div class="col-5 ps-0 pe-2">
+      <p><%= raw("<i class='fa-solid fa-euro-sign'></i>")%> <strong><%=dino.price_per_day %></strong> / day</p>
+    </div>
+  </div>
+<% end %>

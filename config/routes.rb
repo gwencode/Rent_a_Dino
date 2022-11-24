@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
+  get "dinosaurs/map", to: "dinosaurs#map"
   resources :dinosaurs, only: %i[index show] do
     resources :bookings, only: :create
   end

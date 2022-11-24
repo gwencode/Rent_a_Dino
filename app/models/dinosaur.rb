@@ -7,4 +7,7 @@ class Dinosaur < ApplicationRecord
   validates :description, length: { minimum: 6 }
 
   SPECIES = %i[Tyrannosaur Diplodocus Stegosaur Allosaur Velociraptor Galliminus Triceratops Archeopteryx Spinosaur Pterodactyl]
+
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end

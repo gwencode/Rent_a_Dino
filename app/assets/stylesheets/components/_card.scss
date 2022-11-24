@@ -2,7 +2,7 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  width: 15rem;
+  width: 17rem;
   border-radius: 4px;
 }
 
@@ -25,13 +25,14 @@
 }
 
 .card-dino p {
-  font-size: 12px;
+  font-size: 15px;
   opacity: .85;
   margin: 0;
+  padding-bottom: 8px;
 }
 
 .card-dino .card-dino-infos {
-  padding: 16px;
+  padding: 8px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
