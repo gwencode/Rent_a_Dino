@@ -1,34 +1,38 @@
 <div class="container text-center page">
   <h2 id='my-booking-title'>My booked dinos</h2>
-</div>
-<% @bookings.reverse.each do |b| %>
-<div class="container card-booked-dino">
-  <div class="row">
-    <div class="col card-image">
-      <%= cl_image_tag b.dinosaur.photos[0].key, height: 100, width: 100, crop: :fill, id: "dino-avatar" %>
-    </div>
-    <div class="col">
-      <p><%= link_to b.dinosaur.name, dinosaur_path(b.dinosaur), class: "name" %></p>
-      <p class="species"><em><%= b.dinosaur.species %></em></p>
-    </div>
-    <div class="col">
-      <p>From : <%= b.start_date.day %>/<%= b.start_date.month %>/<%= b.start_date.year %></p>
-      <p>To : <%= b.end_date.day %>/<%= b.end_date.month %>/<%= b.end_date.year %></p>
-    </div>
-    <div class="col">
-      <p id="booking-price">Price : <%= b.booking_price.fdiv(100) %>€</p>
-    </div>
-    <div class="col">
-      <h5 class="<%= b.status %>">
-        <% if b.status == "accept" %>
-          <%= "Accepted" %>
-        <% elsif b.status == "deny" %>
-          <%= "Denied" %>
-        <% else %>
-          <%= "Pending..." %>
-        <% end %>
-      </h5>
+  <% @bookings.reverse.each do |b| %>
+  <div class="container card-booked-dino">
+    <div class="row justify-content-between">
+      <div class="col-2 card-image">
+        <%= cl_image_tag b.dinosaur.photos[0].key, height: 100, width: 100, crop: :fill, id: "dino-avatar" %>
+      </div>
+      <div class="col-2">
+        <p><%= link_to b.dinosaur.name, dinosaur_path(b.dinosaur), class: "name" %></p>
+        <p class="species"><em><%= b.dinosaur.species %></em></p>
+      </div>
+      <div class="col-2 text-center">
+        <p><b><%= b.start_date.day %>/<%= b.start_date.month %>/<%= b.start_date.year %></b></p>
+        <p><b>⇓</b></p>
+        <p><b><%= b.end_date.day %>/<%= b.end_date.month %>/<%= b.end_date.year %></b></p>
+      </div>
+      <div class="col-2 text-center">
+        <p id="booking-price">Total : <%= b.booking_price.fdiv(100) %>€</p>
+      </div>
+      <div class="col-2">
+        <p id="client">Owned by:<br><%= b.dinosaur.owner.first_name%> <%= b.dinosaur.owner.last_name%></p>
+      </div>
+      <div class="col-2">
+        <h5 class="<%= b.status %>">
+          <% if b.status == "accept" %>
+            <%= "Accepted" %>
+          <% elsif b.status == "deny" %>
+            <%= "Denied" %>
+          <% else %>
+            <%= "Pending..." %>
+          <% end %>
+        </h5>
+      </div>
     </div>
   </div>
+  <% end %>
 </div>
-<% end %>
