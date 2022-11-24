@@ -11,7 +11,7 @@
   </head>
 
   <body class="background_img text_white">
-    <%= render 'layouts/navbar' unless current_page?(root_path) %>
+    <%= render 'layouts/navbar' unless current_page?(root_path) || current_page?(new_user_session_path) %>
     <div class="main-container">
       <p class="notice m-0 <%= notice ? "" : "d-none" %>"><%= notice %></p>
       <p class="alert m-0"><%= alert %></p>

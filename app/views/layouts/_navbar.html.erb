@@ -1,14 +1,24 @@
 <div class="navbar fixed-top navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid mx-3">
-    <a class="navbar-brand" href="/dinosaurs">
-      <h3>🦖</h3>
-    </a>
-    <a class="navbar-title" href="/dinosaurs">
-      <h3>Rent a Dino</h3>
-    </a>
+    <%= link_to dinosaurs_path do %>
+      <div class="main-title">
+        <svg viewBox="0 0 600 300">
+          <!-- Symbol-->
+          <symbol id="s-text">
+            <text text-anchor="middle" x="50%" y="50%" dy=".35em">Rent a Dino</text>
+          </symbol>
+          <!-- Duplicate symbols-->
+          <use class="text" xlink:href="#s-text"></use>
+          <use class="text" xlink:href="#s-text"></use>
+          <use class="text" xlink:href="#s-text"></use>
+          <use class="text" xlink:href="#s-text"></use>
+          <use class="text" xlink:href="#s-text"></use>
+        </svg>
+      </div>
+    <% end %>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
+      </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <li class="nav-item active d-flex align-items-center m-3">
