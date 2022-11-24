@@ -30,36 +30,47 @@
 
 <%# On affiche les user_bookings %>
 
-<div class="container text-center">
+<div class="container text-center page">
   <h2 id='my-booking-title'>My rents</h2>
-</div>
-<% @bookings.each do |b| %>
-<div class="container card-booked-dino">
-  <div class="row">
-    <div class="col card-image">
-      <%= cl_image_tag b.dinosaur.photos[0].key, height: 100, width: 100, crop: :fill, id: "dino-avatar" %>
-    </div>
-    <div class="col">
-      <p><%= link_to b.dinosaur.name, dinosaur_path(b.dinosaur), class: "name" %></p>
-      <p class="species"><em><%= b.dinosaur.species %></em></p>
-    </div>
-    <div class="col">
-      <p>From : <%= b.start_date.day %>/<%= b.start_date.month %>/<%= b.start_date.year %></p>
-      <p>To : <%= b.end_date.day %>/<%= b.end_date.month %>/<%= b.end_date.year %></p>
-    </div>
-    <div class="col">
-      <p id="booking-price">Price : <%= b.booking_price.fdiv(100) %>€</p>
-      <p id="client">Booked by:<br><%= b.user.first_name%> <%= b.user.last_name%></p>
-    </div>
-    <div class="col">
-      <h5 class="<%= b.status %> m-0"><%= b.status %></h5>
-      <% if b.status == "pending" %>
-      <div class="d-flex justify-content-around mt-3">
-        <%= link_to "Accept", accept_my_rent_path(b), data: {turbo_method: :patch}, class: "link-success" %>
-        <%= link_to "Deny", deny_my_rent_path(b), data: {turbo_method: :patch}, class: "link-danger" %>
+  <% @bookings.each do |b| %>
+  <div class="container card-booked-dino">
+    <div class="row justify-content-between">
+      <div class="col-2 card-image">
+        <%= cl_image_tag b.dinosaur.photos[0].key, height: 100, width: 100, crop: :fill, id: "dino-avatar" %>
       </div>
-      <% end %>
+      <div class="col-2">
+        <p><%= link_to b.dinosaur.name, dinosaur_path(b.dinosaur), class: "name" %></p>
+        <p class="species"><em><%= b.dinosaur.species %></em></p>
+      </div>
+      <div class="col-2 text-center">
+        <p><b><%= b.start_date.day %>/<%= b.start_date.month %>/<%= b.start_date.year %></b></p>
+        <p><b>⇓</b></p>
+        <p><b><%= b.end_date.day %>/<%= b.end_date.month %>/<%= b.end_date.year %></b></p>
+      </div>
+      <div class="col-2 text-center">
+        <p id="booking-price">Total : <%= b.booking_price.fdiv(100) %>€</p>
+      </div>
+      <div class="col-2">
+        <p id="client">Booked by:<br><%= b.user.first_name%> <%= b.user.last_name%></p>
+      </div>
+      <div class="col-2">
+        <h5 class="<%= b.status %> m-0">
+          <% if b.status == "accept" %>
+            <%= "Accepted" %>
+          <% elsif b.status == "deny" %>
+            <%= "Denied" %>
+          <% else %>
+            <%= "Pending..." %>
+          <% end %>
+        </h5>
+        <% if b.status == "pending" %>
+        <div class="d-flex justify-content-around mt-3">
+            <%= link_to "✓", accept_my_rent_path(b), data: {turbo_method: :patch}, class: "badge rounded-pill", id: 'check-green'%>
+            <%= link_to "✕", deny_my_rent_path(b), data: {turbo_method: :patch}, class: 'badge rounded-pill bg-danger', id: 'check-red'%>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
+  <% end %>
 </div>
-<% end %>
