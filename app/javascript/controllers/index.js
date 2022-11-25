@@ -7,5 +7,11 @@ import { application } from "./application"
 import DisplayPriceController from "./display_price_controller"
 application.register("display-price", DisplayPriceController)
 
+import FlatpickrController from "./flatpickr_controller"
+application.register("flatpickr", FlatpickrController)
+
 import MapController from "./map_controller"
 application.register("map", MapController)
+
+import RoarButtonController from "./roar_button_controller"
+application.register("roar-button", RoarButtonController)

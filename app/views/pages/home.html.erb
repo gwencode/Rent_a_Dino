@@ -33,8 +33,8 @@
       </div>
     <% end %>
   </div>
-  <div class="btn-get-started">
-    <%= link_to "Find your dino", dinosaurs_path, class: "btn btn-flat" %>
+  <div class="btn-get-started" data-controller="roar-button" data-roar-button-sound-value="<%= asset_path('roar.mp3')%>">
+    <%= link_to "Find your dino", dinosaurs_path, class: "btn btn-flat", data: { action: "click->roar-button#play" } %>
   </div>
   <div class="timeline-position fixed-bottom">
     <div id="timeline-wrap">
