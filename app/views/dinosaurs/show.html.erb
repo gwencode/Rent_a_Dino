@@ -1,13 +1,15 @@
 <div class="container page">
   <div class="row">
     <div class="col-12 col-lg-8">
-      <% @dino.photos.each do |p| %>
-        <%= cl_image_tag p.key, height: 300, width: 700, crop: :fill  %>
-      <% end %>
-      <h2 class="mt-24"><%=@dino.name%></h2>
-      <hr />
-      <p class="mt-24"><%=@dino.description%></p>
-      <p>Price per day: <%=@dino.price_per_day.fdiv(100)%>€</p>
+      <div class="dino-spacer">
+        <% @dino.photos.each do |p| %>
+          <%= cl_image_tag p.key, height: 300, width: 700, crop: :fill  %>
+        <% end %>
+        <h2 class="mt-24"><%=@dino.name%></h2>
+        <hr />
+        <p class="mt-24"><%=@dino.description%></p>
+        <p>Price per day: <%=@dino.price_per_day.fdiv(100)%>€</p>
+      </div>
     </div>
     <div class="col-12 col-lg-4">
       <div data-controller="display-price" data-display-price-dino-price-value="<%=@dino.price_per_day.fdiv(100)%>" class="rounded border p-2 border-bottom">
