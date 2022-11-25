@@ -1,5 +1,4 @@
 <div class="container my-5">
-
   <div class="mb-5 search-forms">
     <div class="form-species-select form-shadow">
       <%= form_with url: dinosaurs_path, method: :get do  %>
@@ -15,7 +14,6 @@
     </div>
     <% end %>
   </div>
-
   <div class="row">
     <% @dinos.each do |dino| %>
       <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center p-0">
