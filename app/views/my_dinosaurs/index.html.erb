@@ -1,9 +1,10 @@
 <div class="container my-5">
   <div class="row">
     <% @owner_dinos.each do |dino| %>
-      <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center p-0">
+      <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center p-0 position-relative">
+        <%= link_to raw("<i class='fa-solid fa-trash-can'></i>"), my_dinosaur_path(dino), class: "text-decoration-none destroy-icon", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
         <%= link_to dinosaur_path(dino), class: "text-decoration-none" do %>
-          <div class="card-dino mb-5 text-white">
+          <div class="card-dino mb-5 text-white position-relative">
             <%= cl_image_tag dino.photos[0].key, crop: :fill, width: 300 %>
             <div class="card-dino-infos">
               <div></div>
