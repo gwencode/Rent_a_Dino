@@ -4,8 +4,8 @@
       <% @dino.photos.each do |p| %>
         <%= cl_image_tag p.key, height: 300, width: 700, crop: :fill  %>
       <% end %>
-      <h2 class="mt-24"><%=@dino.name%></h2>
-      <hr />
+      <h2 id="desc-name"><%=@dino.name%></h2>
+      <p id="desc-species"><%= raw("<i class='fa-solid fa-paw'></i>") %><em><%= @dino.species %></em></p>
       <p class="mt-24"><%=@dino.description%></p>
       <p><%= raw("<i class='fa-solid fa-euro-sign'></i>") %><strong><%= @dino.price_per_day.fdiv(100) %></strong> / day</p>
     </div>
