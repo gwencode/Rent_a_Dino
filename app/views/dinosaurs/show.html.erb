@@ -1,6 +1,7 @@
 <div class="container page mt-5">
   <div class="row">
     <div class="col-12 col-lg-8">
+
       <% @dino.photos.each do |p| %>
         <%= cl_image_tag p.key, height: 300, width: 700, crop: :fill  %>
       <% end %>
@@ -8,6 +9,7 @@
       <p id="desc-species"><%= raw("<i class='fa-solid fa-paw'></i>") %><em><%= @dino.species %></em></p>
       <p class="mt-24"><%=@dino.description%></p>
       <p><%= raw("<i class='fa-solid fa-euro-sign'></i>") %><strong><%= @dino.price_per_day.fdiv(100) %></strong> / day</p>
+
     </div>
     <div class="col-12 col-lg-4">
       <% if current_user == @dino.owner %>

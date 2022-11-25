@@ -1,8 +1,12 @@
 class DinosaursController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show]
+  skip_before_action :authenticate_user!, only: %i[index show map]
 
   def index
-    @dinos = Dinosaur.all
+    if params[:query].present?
+      @dinos = Dinosaur.where("species ILIKE ?", "%#{params[:query]}%")
+    else
+      @dinos = Dinosaur.all
+    end
   end
 
   def show
@@ -20,7 +24,8 @@ class DinosaursController < ApplicationController
       {
         lat: dino.latitude,
         lng: dino.longitude,
-        info_window: render_to_string(partial: "info_window", locals: {dino: dino})
+        info_window: render_to_string(partial: "info_window", locals: {dino: dino}),
+        image_url: helpers.asset_url("patte")
       }
     end
   end
