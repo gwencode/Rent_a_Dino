@@ -3,7 +3,7 @@ class DinosaursController < ApplicationController
 
   def index
     if params[:query].present?
-      @dinos = Dinosaur.where("species ILIKE ?", "%#{params[:query]}%")
+      @dinos = Dinosaur.where(species: params[:query])
     else
       @dinos = Dinosaur.all
     end

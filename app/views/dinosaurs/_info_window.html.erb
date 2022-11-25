@@ -7,7 +7,7 @@
       <p><%= raw("<i class='fa-solid fa-location-crosshairs'></i>")%> <%=dino.address %></p>
     </div>
     <div class="col-5 ps-0 pe-2">
-      <p><%= raw("<i class='fa-solid fa-euro-sign'></i>")%> <strong><%=dino.price_per_day %></strong> / day</p>
+      <p><%= raw("<i class='fa-solid fa-euro-sign'></i>")%> <strong><%=dino.price_per_day.fdiv(100) %></strong> / day</p>
     </div>
   </div>
 <% end %>

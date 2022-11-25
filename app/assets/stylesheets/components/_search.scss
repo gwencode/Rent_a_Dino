@@ -5,7 +5,9 @@
 }
 
 .form-species-select {
-  width: 50%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .form-species-submit {
@@ -14,5 +16,6 @@
 
 .search-form-control {
   background-color: #0e00009e !important;
-  color: white !important;;
+  color: white !important;
+  width: 400px;
 }
