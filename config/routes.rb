@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :bookings, only: :create
   end
   resources :my_bookings, only: :index
-  resources :my_dinosaurs, only: %i[index new create]
+  resources :my_dinosaurs, only: %i[index new create destroy]
   resources :my_rents, only: :index do
     member do
       patch :accept
