@@ -1,4 +1,4 @@
-<div class="container page">
+<div class="container page mt-5">
   <div class="row">
     <div class="col-12 col-lg-8">
       <% @dino.photos.each do |p| %>
@@ -10,18 +10,45 @@
       <p>Price per day: <%=@dino.price_per_day.fdiv(100)%>€</p>
     </div>
     <div class="col-12 col-lg-4">
-      <div data-controller="display-price" data-display-price-dino-price-value="<%=@dino.price_per_day.fdiv(100)%>" class="rounded border p-2 border-bottom">
-        <h2 class="text-center"><%="Book your Dino"%></h2>
-        <hr />
-          <%= simple_form_for([@dino, @booking]) do |f| %>
-            <%= f.input :start_date, as: :date, html5: true, label: "Start of booking", input_html: {min: Date.today, data: {action: "change->display-price#compute", display_price_target: "startDate"}}%>
-            <%= f.input :end_date, as: :date, html5: true, label: "End of booking", input_html: {min: Date.today, data: {action: "change->display-price#compute", display_price_target: "endDate"}}%>
-            <p>TOTAL PRICE: <span data-display-price-target="totalPrice">0 €</span></p>
-            <div class="d-flex justify-content-center">
-              <%= f.button :submit, "Book now", disabled: true, class: "btn btn-outline-secondary", data: { display_price_target: "button" }%>
+      <% if current_user == @dino.owner %>
+        <h3 id="my-reminder-title"> Who want my dino </h3>
+        <div class="container card-reminder">
+          <% @dino.bookings.reverse.each do |b| %>
+          <%= link_to my_rents_path, class: "text-decoration-none" do %>
+            <div class="row justify-content-between">
+              <div class="col-6 text-center">
+                <p><%= b.user.first_name %></p>
+                <p><%= b.user.last_name %></p>
+              </div>
+              <div class="col-6">
+                <h5 class="<%= b.status %>">
+                  <% if b.status == "accept" %>
+                    <%= "Accepted" %>
+                  <% elsif b.status == "deny" %>
+                    <%= "Denied" %>
+                  <% else %>
+                    <%= "Pending..." %>
+                  <% end %>
+                  </h5>
+              </div>
             </div>
           <% end %>
-      </div>
+          <% end %>
+        </div>
+      <% else %>
+        <div data-controller="display-price" data-display-price-dino-price-value="<%=@dino.price_per_day.fdiv(100)%>" class="rounded border p-2 border-bottom">
+          <h2 class="text-center"><%="Book your Dino"%></h2>
+          <hr />
+            <%= simple_form_for([@dino, @booking]) do |f| %>
+              <%= f.input :start_date, as: :date, html5: true, label: "Start of booking", input_html: {min: Date.today, data: {action: "change->display-price#compute", display_price_target: "startDate"}}%>
+              <%= f.input :end_date, as: :date, html5: true, label: "End of booking", input_html: {min: Date.today, data: {action: "change->display-price#compute", display_price_target: "endDate"}}%>
+              <p>TOTAL PRICE: <span data-display-price-target="totalPrice">0 €</span></p>
+              <div class="d-flex justify-content-center">
+                <%= f.button :submit, "Book now", disabled: true, class: "btn btn-outline-secondary", data: { display_price_target: "button" }%>
+              </div>
+            <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
