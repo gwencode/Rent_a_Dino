@@ -8,8 +8,8 @@
       <h2 id="desc-name"><%=@dino.name%></h2>
       <p id="desc-species"><%= raw("<i class='fa-solid fa-paw'></i>") %><em><%= @dino.species %></em></p>
       <p class="mt-24"><%=@dino.description%></p>
-      <p><%= raw("<i class='fa-solid fa-euro-sign'></i>") %><strong><%= @dino.price_per_day.fdiv(100) %></strong> / day</p>
-
+      <p><%= raw("<i class='fa-solid fa-euro-sign'></i>") %> <strong><%= @dino.price_per_day.fdiv(100) %></strong> / day</p>
+      <p><%= raw("<i class='fa-solid fa-location-crosshairs'></i>")%> <%=@dino.address %></p>
     </div>
     <div class="col-12 col-lg-4">
       <% if current_user == @dino.owner %>

@@ -10,7 +10,7 @@
       </div>
       <div class="col-2">
         <p><%= link_to b.dinosaur.name, dinosaur_path(b.dinosaur), class: "name" %></p>
-        <p class="species"><em><%= b.dinosaur.species %></em></p>
+        <p class="species"><em><%= raw("<i class='fa-solid fa-paw'></i>")%><%= b.dinosaur.species %></em></p>
       </div>
       <div class="col-2 text-center">
         <p><b><%= b.start_date.day %>/<%= b.start_date.month %>/<%= b.start_date.year %></b></p>
