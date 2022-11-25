@@ -12,3 +12,6 @@ application.register("flatpickr", FlatpickrController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
+
+import RoarButtonController from "./roar_button_controller"
+application.register("roar-button", RoarButtonController)
