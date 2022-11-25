@@ -25,7 +25,7 @@ class DinosaursController < ApplicationController
         lat: dino.latitude,
         lng: dino.longitude,
         info_window: render_to_string(partial: "info_window", locals: {dino: dino}),
-        image_url: helpers.asset_url("patte")
+        image_url: helpers.asset_url("patte.png")
       }
     end
   end
