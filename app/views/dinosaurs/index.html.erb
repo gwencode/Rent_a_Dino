@@ -1,4 +1,19 @@
-<div class="container">
+<div class="container my-5">
+  <div class="mb-5 search-forms">
+    <div class="form-species-select form-shadow">
+      <%= form_with url: dinosaurs_path, method: :get do  %>
+      <%= select_tag :query,
+        options_for_select(Dinosaur::SPECIES, params[:query]),
+        include_blank: true,
+        class: "form-control search-form-control",
+        prompt: "Search a species"
+      %>
+    </div>
+    <div class="form-species-submit">
+      <%= submit_tag "Find a species", class: "btn btn-outline-secondary text-white" %>
+    </div>
+    <% end %>
+  </div>
   <div class="row">
     <% @dinos.each do |dino| %>
       <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center p-0">
