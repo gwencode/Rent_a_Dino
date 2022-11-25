@@ -48,7 +48,7 @@
           <%= simple_form_for [@dino, @booking], data: { controller: 'flatpickr' } do |f| %>
             <%= f.input :start_date, as: :date, html5: true, label: "Start of booking", input_html: {min: Date.today, data: {action: "change->display-price#compute", display_price_target: "startDate", flatpickr_target: "startTime" }}%>
             <%= f.input :end_date, as: :date, html5: true, label: "End of booking", input_html: {min: Date.today, data: {action: "change->display-price#compute", display_price_target: "endDate", flatpickr_target: "endTime" }}%>
-            <p>TOTAL PRICE: <span data-display-price-target="totalPrice">0 €</span></p>
+            <p class="text-center"><b><span data-display-price-target="totalPrice"></span></b></p>
             <div class="d-flex justify-content-center">
               <%= f.button :submit, "Book now", disabled: true, class: "btn btn-outline-secondary", data: { display_price_target: "button" }%>
             </div>
